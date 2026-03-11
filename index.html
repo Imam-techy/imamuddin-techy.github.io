@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Initializing Portfolio</title>
+
+<style>
+
+body{
+margin:0;
+font-family:monospace;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+overflow:hidden;
+color:#00ff9c;
+
+/* BACKGROUND IMAGE */
+
+background:
+linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.85)),
+url("Background.jpeg");
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+}
+
+/* LOGO */
+
+.logo{
+
+width:130px;
+height:130px;
+
+object-fit:cover;
+
+border-radius:50%;
+
+border:3px solid #00ff9c;
+
+box-shadow:
+0 0 10px #00ff9c,
+0 0 30px #00ff9c,
+0 0 60px #00ff9c;
+
+opacity:0;
+transform:scale(.3);
+transition:1.5s;
+
+}
+
+/* TITLE */
+
+.title{
+
+font-size:60px;
+margin-top:20px;
+
+background:linear-gradient(
+90deg,
+#00ff9c,
+#00e1ff,
+#ff00c8,
+#7bff00,
+#ffae00
+);
+
+-webkit-background-clip:text;
+color:transparent;
+
+opacity:0;
+transition:1s;
+
+}
+
+/* TERMINAL */
+
+#terminal{
+
+width:520px;
+line-height:1.6;
+margin-top:30px;
+font-size:14px;
+opacity:0;
+
+}
+
+/* LOADING BAR */
+
+.loader{
+
+width:420px;
+height:12px;
+border:1px solid #00ff9c;
+margin-top:20px;
+opacity:0;
+
+}
+
+.bar{
+
+height:100%;
+width:0;
+background:linear-gradient(90deg,#00ff9c,#00e1ff);
+
+}
+
+#percent{
+
+margin-top:6px;
+opacity:0;
+
+}
+
+/* CURSOR */
+
+.cursor{
+
+display:inline-block;
+width:8px;
+background:#00ff9c;
+margin-left:5px;
+
+animation:blink 1s infinite;
+
+}
+
+@keyframes blink{
+
+0%{opacity:1}
+50%{opacity:0}
+100%{opacity:1}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<img src="linkdinlogo.jpg" class="logo" id="logo">
+
+<h1 class="title" id="title">Welcome to Portfolio</h1>
+
+<div id="terminal"></div>
+
+<div class="loader" id="loader">
+<div class="bar" id="bar"></div>
+</div>
+
+<div id="percent">0%</div>
+
+<script>
+
+/* LOGO ANIMATION */
+
+setTimeout(()=>{
+
+document.getElementById("logo").style.opacity="1"
+document.getElementById("logo").style.transform="scale(1)"
+
+},500)
+
+
+/* TITLE ANIMATION */
+
+setTimeout(()=>{
+
+document.getElementById("title").style.opacity="1"
+
+},2000)
+
+
+/* TERMINAL LOGS */
+
+const logs=[
+
+"Initializing security interface...",
+"Scanning network modules...",
+"Checking firewall...",
+"Loading cybersecurity tools...",
+"Scanning threat database...",
+"Encrypting connection...",
+"System secure...",
+"Launching portfolio..."
+
+]
+
+let i=0
+
+function type(){
+
+if(i<logs.length){
+
+document.getElementById("terminal").innerHTML+=
+logs[i]+"<span class='cursor'></span><br>"
+
+i++
+
+setTimeout(type,500)
+
+}else{
+
+startLoading()
+
+}
+
+}
+
+/* SHOW TERMINAL */
+
+setTimeout(()=>{
+
+document.getElementById("terminal").style.opacity="1"
+
+type()
+
+},3500)
+
+
+/* LOADING BAR */
+
+function startLoading(){
+
+document.getElementById("loader").style.opacity="1"
+document.getElementById("percent").style.opacity="1"
+
+let width=0
+
+let bar=document.getElementById("bar")
+let percent=document.getElementById("percent")
+
+let load=setInterval(function(){
+
+if(width>=100){
+
+clearInterval(load)
+
+window.location.href="index.html"
+
+}else{
+
+width++
+
+bar.style.width=width+"%"
+percent.innerHTML=width+"%"
+
+}
+
+},40)
+
+}
+
+</script>
+
+</body>
+</html>
