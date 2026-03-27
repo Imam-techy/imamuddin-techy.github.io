@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cyber Security Login</title>
+
+<style>
+
+body{
+margin:0;
+background:#02040a;
+font-family:Consolas,monospace;
+color:#00ff9c;
+overflow:hidden;
+}
+
+/* MATRIX */
+
+#matrix{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+/* PANEL */
+
+.panel{
+
+position:absolute;
+top:50%;
+left:10%;
+transform:translateY(-50%);
+
+width:360px;
+padding:30px;
+
+background:rgba(0,0,0,.85);
+border:1px solid #00ff9c;
+
+box-shadow:
+0 0 10px #00ff9c,
+0 0 30px rgba(0,255,156,.4);
+
+}
+
+/* INPUT */
+
+input{
+
+width:100%;
+padding:12px;
+margin:10px 0;
+
+background:black;
+border:1px solid #00ff9c;
+color:#00ff9c;
+
+}
+
+/* PASSWORD BOX */
+
+.passBox{
+position:relative;
+}
+
+.eye{
+
+position:absolute;
+right:12px;
+top:14px;
+
+cursor:pointer;
+color:#00ff9c;
+font-size:18px;
+
+}
+
+/* BUTTON */
+
+button{
+
+width:100%;
+padding:12px;
+
+background:#00ff9c;
+border:none;
+
+font-weight:bold;
+cursor:pointer;
+
+}
+
+/* LINK */
+
+.link{
+
+margin-top:15px;
+cursor:pointer;
+
+color:#00ff9c;
+font-weight:bold;
+
+}
+
+/* PASSWORD STRENGTH */
+
+.strength{
+
+height:6px;
+background:#111;
+margin-top:5px;
+
+}
+
+.bar{
+
+height:100%;
+width:0%;
+background:red;
+
+}
+
+/* MESSAGE */
+
+#msg{
+margin-top:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="panel">
+
+<h3 id="title">LOGIN PORTFOLIO</h3>
+
+<form id="loginForm">
+
+<input id="user" placeholder="Username">
+
+<div class="passBox">
+
+<input id="pass" type="password" placeholder="Password">
+
+<span class="eye" onclick="togglePassword()">👁</span>
+
+</div>
+
+<div class="strength">
+<div class="bar" id="strengthBar"></div>
+</div>
+
+<button type="submit" id="btn">LOGIN</button>
+
+</form>
+
+<div class="link" id="switch">Create account</div>
+
+<div id="msg"></div>
+
+</div>
+
+<script>
+
+/* MATRIX */
+
+const canvas=document.getElementById("matrix")
+const ctx=canvas.getContext("2d")
+
+canvas.height=window.innerHeight
+canvas.width=window.innerWidth
+
+const letters="01"
+const fontSize=14
+const columns=canvas.width/fontSize
+
+const drops=[]
+
+for(let i=0;i<columns;i++) drops[i]=1
+
+function draw(){
+
+ctx.fillStyle="rgba(0,0,0,0.05)"
+ctx.fillRect(0,0,canvas.width,canvas.height)
+
+ctx.fillStyle="#00ff9c"
+ctx.font=fontSize+"px monospace"
+
+for(let i=0;i<drops.length;i++){
+
+const text=letters[Math.floor(Math.random()*letters.length)]
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize)
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
+drops[i]=0
+
+drops[i]++
+
+}
+
+}
+
+setInterval(draw,33)
+
+/* ELEMENTS */
+
+const user=document.getElementById("user")
+const pass=document.getElementById("pass")
+const msg=document.getElementById("msg")
+const title=document.getElementById("title")
+const btn=document.getElementById("btn")
+const switchBtn=document.getElementById("switch")
+const form=document.getElementById("loginForm")
+const bar=document.getElementById("strengthBar")
+
+let registerMode=false
+
+/* PASSWORD SHOW/HIDE */
+
+function togglePassword(){
+
+if(pass.type==="password"){
+pass.type="text"
+}else{
+pass.type="password"
+}
+
+}
+
+/* PASSWORD STRENGTH */
+
+pass.addEventListener("input",function(){
+
+let v=pass.value.length
+
+if(v<4){
+bar.style.width="25%"
+bar.style.background="red"
+}
+else if(v<7){
+bar.style.width="50%"
+bar.style.background="orange"
+}
+else if(v<10){
+bar.style.width="75%"
+bar.style.background="yellow"
+}
+else{
+bar.style.width="100%"
+bar.style.background="lime"
+}
+
+})
+
+/* SWITCH MODE */
+
+switchBtn.onclick=function(){
+
+registerMode=!registerMode
+
+user.value=""
+pass.value=""
+msg.innerHTML=""
+
+if(registerMode){
+
+title.innerText="REGISTER ACCOUNT"
+btn.innerText="REGISTER"
+switchBtn.innerText="Already have account?"
+
+}
+
+else{
+
+title.innerText="LOGIN PORTFOLIO"
+btn.innerText="LOGIN"
+switchBtn.innerText="Create account"
+
+}
+
+}
+
+/* FORM SUBMIT */
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault()
+
+if(registerMode){
+register()
+}else{
+login()
+}
+
+})
+
+/* REGISTER */
+
+function register(){
+
+let u=user.value.trim()
+let p=pass.value.trim()
+
+if(localStorage.getItem("username")==u){
+
+msg.innerHTML="USERNAME ALREADY EXISTS"
+return
+
+}
+
+localStorage.setItem("username",u)
+localStorage.setItem("password",p)
+
+msg.innerHTML="ACCOUNT CREATED"
+
+setTimeout(()=>{
+switchBtn.click()
+},1200)
+
+}
+
+/* LOGIN */
+
+function login(){
+
+let u=user.value.trim()
+let p=pass.value.trim()
+
+let su=localStorage.getItem("username")
+let sp=localStorage.getItem("password")
+
+msg.innerHTML="AUTHENTICATING..."
+
+setTimeout(()=>{
+
+if(u===su && p===sp){
+
+msg.innerHTML="ACCESS GRANTED"
+
+sessionStorage.setItem("auth","true")
+
+setTimeout(()=>{
+window.location.href="loading.html"
+},1000)
+
+}
+
+else{
+
+msg.innerHTML="INVALID LOGIN"
+
+}
+
+},800)
+
+}
+
+</script>
+
+</body>
+</html>

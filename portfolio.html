@@ -11,6 +11,8 @@
 <canvas id="matrixLeft"></canvas>
 <canvas id="matrixRight"></canvas>
 
+<div id="cursorGlow"></div>
+
 <nav>
 <a href="#about">About</a>
 <a href="#skills">Skills</a>
@@ -26,15 +28,12 @@
 <div class="container">
 
 <h1 class="title glitch">MD IMAMUDDIN</h1>
-
-<p class="subtitle type">
-IT Engineer | Network Engineer | Cybersecurity | Ethical Hacking
-</p>
+<h2 id="dynamicText"></h2>
 
 
 <!-- ABOUT -->
 
-<section id="about" class="box">
+<section id="about" class="box reveal">
 
 <h2 class="type">About Me</h2>
 
@@ -51,7 +50,7 @@ Currently pursuing BCA (Cloud & Security) with a career focus on Network & Cyber
 
 <!-- SKILLS -->
 
-<section id="skills" class="box">
+<section id="skills" class="box reveal">
 
 <h2 class="type">Technical Skills</h2>
 
@@ -100,7 +99,7 @@ Currently pursuing BCA (Cloud & Security) with a career focus on Network & Cyber
 
 <!-- EXPERIENCE -->
 
-<section id="experience" class="box">
+<section id="experience" class="box reveal">
 
 <h2 class="type">Professional Experience</h2>
 
@@ -127,7 +126,7 @@ Currently pursuing BCA (Cloud & Security) with a career focus on Network & Cyber
 
 <!-- PROJECTS -->
 
-<section id="projects" class="box">
+<section id="projects" class="box reveal">
     
 
 <h2 class="type">Networking & Infrastructure Labs & Projects</h2>
@@ -183,20 +182,19 @@ high availability of critical law-enforcement systems.
 
 <!-- TOOLS -->
 
-<section id="tools" class="box">
+<section id="tools" class="box reveal">
 
 <h2 class="type">Cybersecurity Tools</h2>
 
-<div class="tools">
-
-<div class="tool type">Kali Linux</div>
-<div class="tool type">Wireshark</div>
-<div class="tool type">Nmap</div>
-<div class="tool type">Burp Suite</div>
-<div class="tool type">Cisco Packet Tracer</div>
-<div class="tool type">VMware</div>
-<div class="tool type">Metasploit</div>
-<div class="tool type">Nessus</div>
+<div class="tools" >
+  <a class="btn type" href="https://www.kali.org/get-kali/#kali-installer-images" target="_blank">Kali Linux</a>
+  <a class="btn type" href="https://www.wireshark.org/download.html" target="_blank">Wireshark</a>
+  <a class="btn type" href="https://nmap.org/download" target="_blank">Nmap</a>
+  <a class="btn type" href="https://portswigger.net/burp/documentation/desktop/getting-started/download-and-install" target="_blank">Burp Suite</a>
+  <a class="btn type" href="https://www.netacad.com/resources/lab-downloads?courseLang=en-US" target="_blank">Cisco Packet Tracer</a>
+  <a class="btn type" href="https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&freeDownloads=true" target="_blank">VMware</a>
+  <a class="btn type" href="https://www.metasploit.com/download" target="_blank">Metasploit</a>
+  <a class="btn type" href="https://www.tenable.com/downloads?loginAttempted=true" target="_blank">Nessus</a>
 
 </div>
 
@@ -204,27 +202,123 @@ high availability of critical law-enforcement systems.
 
 
 <!-- CERTIFICATIONS -->
-
-<section id="certification" class="box">
+<section id="certification" class="box reveal">
 
 <h2 class="type">Certifications</h2>
 
-<ul>
+<ul class="cert-list">
+<li class="cert-item">
+  <span class="type">CCNA - router and switching</span>
+  
+  <a href="Md Imamuddin Ansari.pdf" 
+     target="_blank" 
+     class="cert-link">
+     View Certificate
+  </a>
+</li>
 
-<li class="type">CCNA – Routing & Switching</li>
-<li class="type">Introduction to Ethical Hacking</li>
-<li class="type">Introduction to Network Analysis</li>
-<li class="type">Introduction to Generative AI</li>
-<li class="type">Dark Web, Anonymity & Cryptocurrency – EC Council</li>
+<li class="cert-item">
+  <span class="type">Introduction to dark web operation - Security Blue Team</span>
+  
+  <a href="https://elearning.securityblue.team/home/certificate/310251743" 
+     target="_blank" 
+     class="cert-link">
+     View Certificate
+  </a>
+</li>
+
+  <li class="cert-item">
+  <span class="type">Introduction to Network Analysis - Security Blue team</span>
+  
+  <a href="https://elearning.securityblue.team/home/certificate/313759656" 
+     target="_blank" 
+     class="cert-link">
+     View Certificate
+  </a>
+</li>
+ <li class="cert-item">
+  <span class="type">Introduction to Vulnerability Management - Security Blue Team</span>
+  
+  <a href="https://elearning.securityblue.team/home/certificate/250829393" 
+     target="_blank" 
+     class="cert-link">
+     View Certificate
+  </a>
+</li>
+
+  <li class="cert-item">
+  <span class="type">Introduction to Ethical Hacking - Great Learning</span>
+  
+  <a href="https://www.mygreatlearning.com/certificate/JPHLKSHD" 
+     target="_blank" 
+     class="cert-link">
+     View Certificate
+  </a>
+</li>
+
+ <li class="cert-item">
+  <span class="type">Introduction to Generative AI - Google</span>
+  
+  <a href="https://www.cloudskillsboost.google/public_profiles/df5e71a4-2f2a-478e-a90d-e59c31397db9/badges/8429306?utm_medium=social&utm_source=linkedin&utm_campaign=" 
+     target="_blank" 
+     class="cert-link">
+     View Certificate
+  </a>
+</li>
+
+ <li class="cert-item">
+  <span class="type">Introduction to Responsible AI - Google</span>
+  
+  <a href="https://www.skills.google/public_profiles/df5e71a4-2f2a-478e-a90d-e59c31397db9/badges/8429436?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share" 
+     target="_blank" 
+     class="cert-link">
+     View Certificate
+  </a>
+</li>
+
+
+ <li class="cert-item">
+  <span class="type">Prompt Design in Vertex AI - Google</span>
+  
+  <a href="https://www.skills.google/public_profiles/df5e71a4-2f2a-478e-a90d-e59c31397db9/badges/19852924?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share" 
+     target="_blank" 
+     class="cert-link">
+     View Certificate
+  </a>
+</li>
+
+<li class="cert-item">
+  <span class="type">Introduction to Dark Web, Anonymity, and Cryptocurrency - EC Council</span>
+  
+  <a href="https://learn.eccouncil.org/certificate/0e5863c7-64a2-4035-b420-295a2864cec4?logged=true" 
+     target="_blank" 
+     class="cert-link">
+     View Certificate
+  </a>
+</li>
+
+
+ <li class="cert-item">
+  <span class="type">Generative AI: Introduction and Applications – IBM</span>
+  
+  <a href="https://www.coursera.org/account/accomplishments/verify/5Z1XQDN8043T" 
+     target="_blank" 
+     class="cert-link">
+     View Certificate
+  </a>
+  </li>
+  
+  <li class="cert-item"><span class="type"></span>
+  <a class="btn type" href="certification.html" target="_blank">View Cert-gallery</a>
+</li>
 
 </ul>
 
 </section>
 
-
 <!-- ACHIEVEMENTS -->
 
-<section id="achievement" class="box">
+<section id="achievement" class="box reveal">
 
 <h2 class="type">Achievements</h2>
 
@@ -242,20 +336,21 @@ high availability of critical law-enforcement systems.
 
 <!-- RESUME -->
 
-<section id="resume" class="box">
+<section id="resume" class="box reveal">
 
 <h2 class="type">Resume</h2>
 
 <a class="btn type" href="Imamuddin_IT-Engineer.docx" download>
 Download Resume
 </a>
+<a class="btn type" href="https://docs.google.com/document/d/1fwPkrwfjASaBvTsQHTqU4_ablDVWKPor/edit#bookmark=id.1ij1h2ec1bj" target="_blank" >View Resume</a>
 
 </section>
 
 
 <!-- CONTACT -->
 
-<section id="contact" class="box">
+<section id="contact" class="box reveal">
 
 <h2 class="type">Contact</h2>
 
@@ -274,6 +369,45 @@ Download Resume
 </section>
 
 </div>
+<audio id="clickSound" src="click.mp3" preload="auto"></audio>
+<script>
+const roles = [
+  "IT Engineer    ","Network Engineer   ","Tech & Security Enthusiast    ",
+"BCA Cloud & Security   "
+];
+
+let i = 0;
+let j = 0;
+let current = "";
+let isDeleting = false;
+
+function typeEffect() {
+  let speed = 100;
+
+  if (!isDeleting && j <= roles[i].length) {
+    current = roles[i].substring(0, j++);
+  } else if (isDeleting && j >= 0) {
+    current = roles[i].substring(0, j--);
+    speed = 50;
+  }
+
+  document.getElementById("dynamicText").innerText = current;
+
+  if (j === roles[i].length) {
+    isDeleting = true;
+    speed = 1500; // pause
+  }
+
+  if (j === 0 && isDeleting) {
+    isDeleting = false;
+    i = (i + 1) % roles.length;
+  }
+
+  setTimeout(typeEffect, speed);
+}
+
+typeEffect();
+</script>
 
 <script src="matrix.js"></script>
 <canvas id="trail"></canvas>

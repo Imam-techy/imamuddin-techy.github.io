@@ -1,0 +1,286 @@
+# Md Imamuddin – Single File Hacker Style Portfolio
+
+This version uses **ONLY ONE FILE (index.html)**.
+CSS and JavaScript are embedded inside the file so you only need to upload **one file** to GitHub.
+
+Repository name:
+
+imam-techy.github.io
+
+Upload this file as:
+
+index.html
+
+---
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Md Imamuddin | Network & Cybersecurity Engineer</title>
+
+<style>
+
+body{
+background:black;
+color:#00ff9c;
+font-family:Courier New, monospace;
+margin:0;
+}
+
+.container{
+width:70%;
+margin:auto;
+padding-top:60px;
+}
+
+.title{
+font-size:60px;
+text-shadow:0 0 15px #00ff9c;
+}
+
+.subtitle{
+margin-bottom:40px;
+}
+
+.terminal{
+background:#020202;
+border:1px solid #00ff9c;
+padding:15px;
+margin-bottom:40px;
+box-shadow:0 0 10px #00ff9c;
+}
+
+section{
+border:1px solid #00ff9c;
+padding:25px;
+margin-top:30px;
+box-shadow:0 0 15px #00ff9c;
+}
+
+.skill{
+margin-bottom:15px;
+}
+
+.bar{
+width:100%;
+background:#111;
+height:10px;
+}
+
+.bar div{
+height:10px;
+background:#00ff9c;
+}
+
+.btn{
+display:inline-block;
+padding:10px 20px;
+border:1px solid #00ff9c;
+color:#00ff9c;
+text-decoration:none;
+margin-top:10px;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="container">
+
+<div class="terminal">
+<span>> Initializing Portfolio...</span><br>
+<span>> Loading Network Engineer Profile...</span>
+</div>
+
+<h1 class="title">Md Imamuddin</h1>
+<p class="subtitle">IT Engineer | Networking | Cybersecurity</p>
+
+<section>
+<h2>About Me</h2>
+<p>
+IT Engineer with 2+ years of experience in desktop support, networking and enterprise IT deployments.
+Skilled in Windows Server, Active Directory, VPN connectivity and network troubleshooting.
+Currently pursuing BCA (Cloud & Security).
+</p>
+</section>
+
+<section>
+<h2>Technical Skills</h2>
+
+<div class="skill">
+<p>Windows Server</p>
+<div class="bar"><div style="width:90%"></div></div>
+</div>
+
+<div class="skill">
+<p>Active Directory</p>
+<div class="bar"><div style="width:85%"></div></div>
+</div>
+
+<div class="skill">
+<p>Networking (TCP/IP, DNS, DHCP)</p>
+<div class="bar"><div style="width:90%"></div></div>
+</div>
+
+<div class="skill">
+<p>Routing Protocols (OSPF / RIP)</p>
+<div class="bar"><div style="width:85%"></div></div>
+</div>
+
+<div class="skill">
+<p>Network Security / ACL</p>
+<div class="bar"><div style="width:80%"></div></div>
+</div>
+
+<div class="skill">
+<p>AWS Cloud Fundamentals</p>
+<div class="bar"><div style="width:70%"></div></div>
+</div>
+
+<div class="skill">
+<p>VMware Virtualization</p>
+<div class="bar"><div style="width:85%"></div></div>
+</div>
+
+</section>
+
+<section>
+<h2>Experience</h2>
+
+<h3>IT Engineer – Transline Technologies</h3>
+<p>Enterprise infrastructure support, biometric systems and network troubleshooting.</p>
+
+<h3>Desktop Support Engineer – VServ Infosystem</h3>
+<p>L1/L2 support for 200+ users including OS deployment, VPN configuration and ticket resolution.</p>
+
+</section>
+
+<section>
+<h2>Networking Labs</h2>
+<ul>
+<li>Windows Server Active Directory Lab</li>
+<li>Network OS Deployment (WDS)</li>
+<li>Enterprise Network Simulation – Cisco Packet Tracer</li>
+<li>OSPF Multi Area Routing</li>
+<li>IPv6 OSPF Configuration</li>
+<li>ACL Security Implementation</li>
+<li>HSRP Router Redundancy</li>
+<li>Routing Redistribution</li>
+<li>GRE Tunnel Configuration</li>
+</ul>
+</section>
+
+<section>
+<h2>Certifications</h2>
+<ul>
+<li>CCNA Routing & Switching</li>
+<li>Ethical Hacking Fundamentals</li>
+<li>Network Analysis</li>
+<li>EC‑Council Security Training</li>
+</ul>
+</section>
+
+<section>
+<h2>Resume</h2>
+<a class="btn" href="#">Download Resume</a>
+</section>
+
+<section>
+<h2>Contact</h2>
+<p>Email: mdimamuddin4620@gmail.com</p>
+<p>LinkedIn: https://www.linkedin.com/in/imam-tech-cybersecurity/</p>
+<p>Location: New Delhi, India</p>
+</section>
+
+</div>
+
+<script>
+
+var canvas=document.getElementById("matrix");
+var ctx=canvas.getContext("2d");
+
+canvas.height=window.innerHeight;
+canvas.width=window.innerWidth;
+
+var letters="01".split("");
+
+var fontSize=14;
+var columns=canvas.width/fontSize;
+
+var drops=[];
+
+for(var x=0;x<columns;x++)
+{
+ drops[x]=1;
+}
+
+function draw()
+{
+ ctx.fillStyle="rgba(0,0,0,0.05)";
+ ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ ctx.fillStyle="#0F0";
+ ctx.font=fontSize+"px monospace";
+
+ for(var i=0;i<drops.length;i++)
+ {
+  var text=letters[Math.floor(Math.random()*letters.length)];
+
+  ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+  if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
+  {
+   drops[i]=0;
+  }
+
+  drops[i]++;
+ }
+}
+
+setInterval(draw,33);
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+# How to Upload
+
+1. Click **Add file → Create new file**
+2. Name it:
+
+index.html
+
+3. Paste the code above
+
+4. Click **Commit changes**
+
+After that go to:
+
+Settings → Pages → Deploy from branch → main
+
+Your portfolio will be live at:
+
+[https://imam-techy.github.io](https://imam-techy.github.io)
+
+---
+
+Now you only need **ONE FILE** instead of multiple files.

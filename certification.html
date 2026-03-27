@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Certificates - MD Imamuddin</title>
+<link rel="stylesheet" href="certificate.css">
+</head>
+
+<body>
+
+<h1>📜 My Certifications</h1>
+
+<a href="portfolio.html" class="back">⬅ Back to Portfolio</a>
+
+<div class="cert-gallery">
+
+  <!-- ALL CARDS INSIDE THIS -->
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Gemini AI Certificate.png">
+    </div>
+    <div class="cert-title">Gemini AI Certified</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Genrative AI Certificate.png">
+    </div>
+    <div class="cert-title">Generative AI</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Responsible AI Certificate.png">
+    </div>
+    <div class="cert-title">Responsible AI</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Promp Design Certicate.png">
+    </div>
+    <div class="cert-title">Prompt Design in Vertex</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Large Language AI Certificate.png">
+    </div>
+    <div class="cert-title">Large Language AI</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="EC Council.png">
+    </div>
+    <div class="cert-title">Anonimity & Crypto Currency</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Ethical Hacker.jpg">
+    </div>
+    <div class="cert-title">Ethical Hacker</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="CCNA.jpg">
+    </div>
+    <div class="cert-title">Routing & Switching</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Introduction to Dark Web Operations-course_page-0001.jpg">
+    </div>
+    <div class="cert-title">Dark Web</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Introduction to Network Analysis-course_page-0001.jpg">
+    </div>
+    <div class="cert-title">Network Analysis</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Introduction to Vulnerability Management-course_page-0001.jpg">
+    </div>
+    <div class="cert-title">Vulnerability Management</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Professional Life.jpg">
+    </div>
+    <div class="cert-title">Professional Life Skills</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Advance Excel.jpg">
+    </div>
+    <div class="cert-title">Advance Excel</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Ethical Certified.jpg">
+    </div>
+    <div class="cert-title">Certified CEH</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Hacker Badge.jpg">
+    </div>
+    <div class="cert-title">Certified CEH - Cisco</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Cisco Pkt.jpg">
+    </div>
+    <div class="cert-title">Cisco Packet Tracer</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Cyber Security badge.jpg">
+    </div>
+    <div class="cert-title">Cyber Security Badge</div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-img-box">
+      <img src="Cyber Security.jpg">
+    </div>
+    <div class="cert-title">Cyber Security</div>
+  </div>
+
+</div> <!-- ✅ gallery close yahi -->
+
+<!-- MODAL -->
+<div id="modal">
+  <span id="close">&times;</span>
+  <img id="modalImg">
+</div>
+
+<script>
+
+/* SCROLL ANIMATION */
+const cards = document.querySelectorAll(".cert-card")
+
+function showCards(){
+  cards.forEach((card,index)=>{
+    let top = card.getBoundingClientRect().top
+
+    if(top < window.innerHeight - 100){
+      setTimeout(()=>{
+        card.classList.add("show")
+      }, index * 120)
+    }
+  })
+}
+
+window.addEventListener("scroll", showCards)
+showCards()
+
+/* MODAL */
+const modal = document.getElementById("modal")
+const modalImg = document.getElementById("modalImg")
+const close = document.getElementById("close")
+
+document.querySelectorAll(".cert-img-box img").forEach(img=>{
+  img.addEventListener("click", ()=>{
+    modal.style.display="flex"
+    modalImg.src = img.src
+  })
+})
+
+close.onclick = ()=> modal.style.display="none"
+modal.onclick = ()=> modal.style.display="none"
+
+</script>
+
+</body>
+</html>

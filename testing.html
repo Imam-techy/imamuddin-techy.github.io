@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cyber Portfolio</title>
+
+<style>
+
+/* ===== BODY ===== */
+body{
+  margin:0;
+  padding:40px;
+  font-family:Consolas,monospace;
+  color:#00ff9c;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+    url("Portfolio Logo.png");
+
+  background-size: 45%;
+  background-position: center 15%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  background-color:#000;
+}
+
+/* ===== MATRIX ===== */
+#matrixLeft, #matrixRight{
+  position:fixed;
+  top:0;
+  width:15%;
+  height:100%;
+  z-index:1;
+  pointer-events:none;
+  opacity:0.8;
+}
+
+#matrixLeft{ left:0; }
+#matrixRight{ right:0; }
+
+/* ===== CONTAINER ===== */
+.container{
+  width:70%;
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+/* ===== TITLE ===== */
+.title{
+  font-size:60px;
+  text-align:center;
+
+  text-shadow:
+    0 0 10px #00ff9c,
+    0 0 20px #00ff9c,
+    0 0 40px rgba(0,255,156,0.5);
+}
+
+/* 🔥 NEON LINE */
+.title::after{
+  content:"";
+  display:block;
+  width:200px;
+  height:2px;
+  margin:15px auto;
+
+  background:#00ff9c;
+
+  box-shadow:
+    0 0 10px #00ff9c,
+    0 0 20px #00ff9c;
+}
+
+/* ===== SUBTITLE ===== */
+.subtitle{
+  text-align:center;
+  margin-bottom:10px;
+  text-shadow:0 0 8px #00ff9c;
+}
+
+/* ===== TERMINAL TEXT ===== */
+.terminal{
+  text-align:center;
+  font-size:14px;
+  opacity:0.7;
+  margin-bottom:30px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink{
+  50%{ opacity:0.3 }
+}
+
+/* ===== BOX ===== */
+.box{
+  border:1px solid #00ff9c;
+  padding:25px;
+  margin-top:40px;
+
+  background: rgba(0,0,0,0.4);
+
+  box-shadow:
+    0 0 15px rgba(0,255,156,0.2);
+
+  transition:0.3s;
+}
+
+.box:hover{
+  box-shadow:
+    0 0 25px #00ff9c,
+    0 0 60px rgba(0,255,156,0.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="matrixLeft"></canvas>
+<canvas id="matrixRight"></canvas>
+
+<div class="container">
+
+<h1 class="title">MD IMAMUDDIN</h1>
+<h2 class="subtitle">BCA Cloud & Security</h2>
+<p class="terminal">> Initializing System...</p>
+
+<div class="box">
+  <h2>About Me</h2>
+  <p>
+    Detail-oriented IT Engineer with 2+ years of experience in desktop support,
+    networking, and large-scale IT deployments. Strong expertise in system
+    administration, troubleshooting, and cybersecurity.
+  </p>
+</div>
+
+<div class="box">
+  <h2>Technical Skills</h2>
+  <p>✔ Windows / Linux</p>
+  <p>✔ Networking (TCP/IP, DNS, VPN)</p>
+  <p>✔ Active Directory</p>
+  <p>✔ Cybersecurity Tools</p>
+</div>
+
+</div>
+
+<script>
+
+/* ===== MATRIX FUNCTION ===== */
+function matrix(canvas){
+
+const ctx = canvas.getContext("2d")
+
+function resize(){
+  canvas.height = window.innerHeight
+  canvas.width = canvas.offsetWidth
+}
+
+resize()
+window.addEventListener("resize", resize)
+
+const letters = "01"
+const fontSize = 14
+let columns
+let drops = []
+
+function init(){
+  columns = Math.floor(canvas.width / fontSize)
+  drops = []
+  for(let i=0;i<columns;i++){
+    drops[i] = 1
+  }
+}
+
+init()
+
+function draw(){
+
+ctx.fillStyle="rgba(0,0,0,0.05)"
+ctx.fillRect(0,0,canvas.width,canvas.height)
+
+ctx.fillStyle="#00ff9c"
+ctx.font=fontSize+"px monospace"
+
+for(let i=0;i<drops.length;i++){
+
+const text=letters[Math.floor(Math.random()*letters.length)]
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize)
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+drops[i]=0
+}
+
+drops[i]++
+
+}
+
+}
+
+setInterval(draw,33)
+}
+
+matrix(document.getElementById("matrixLeft"))
+matrix(document.getElementById("matrixRight"))
+
+</script>
+
+</body>
+</html>
